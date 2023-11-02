@@ -10,9 +10,12 @@ import Home from './components/Home';
 import Student from './components/students.js';
 import AddStudent from './components/AddStudent.js';
 import AddProfessor from './components/AddProf.js';
+import bg from './res/backgrnd.jpg';
 function App() {
   return (
       <div className="App">
+        <div className='bg'><img src={bg} className="bg" alt="background"/></div>
+       
         <Router>
           <Navbar/>
           <Routes>
