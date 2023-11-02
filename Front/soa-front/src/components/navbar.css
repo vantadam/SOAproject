@@ -1,0 +1,35 @@
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: #333;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f9a602;
+}
+
+.left {
+    flex: 1;
+}
+
+.right {
+    flex: 2;
+    justify-content: flex-end;
+}
