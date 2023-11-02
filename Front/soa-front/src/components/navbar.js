@@ -12,13 +12,13 @@ function Navbar() {
             </ul>
             <ul className="right">
                 <li>
-                    <Link to="/student">Student</Link>
+                    <Link to="/student">Students</Link>
                 </li>
                 <li>
-                    <Link to="/professor">Professor</Link>
+                    <Link to="/prof">Professors</Link>
                 </li>
                 <li>
-                    <Link to="/administration">Administration</Link>
+                    <Link to="/administration">Admin Staff</Link>
                 </li>
             </ul>
         </nav>

@@ -1,6 +1,7 @@
 // Student.js
 import React from 'react';
 import './students.css';
+import { Link } from 'react-router-dom';
 
 const Student = () => {
     return (
@@ -13,7 +14,7 @@ const Student = () => {
                         <li>10B</li>
                     </ul>
                 </div>
-                <button id="addStudentButton">Add Student</button>
+                <Link to={"/addstudent"} id="addStudentButton">Add Student</Link>
             </div>
             <div className="student-list">
                 <h1>Student List</h1>

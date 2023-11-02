@@ -12,30 +12,9 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 10px 0 0 10px;
-    
   }
   
-  .classes {
-    margin-bottom: 20px;
-  }
-  
-  .classes h2 {
-    color: #333;
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .classes ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .classes li {
-    margin-bottom: 5px;
-    font-size: 16px;
-  }
-  
-  #addStudentButton {
+  #addProfessorButton {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -46,11 +25,11 @@
     transition: background-color 0.2s ease;
   }
   
-  #addStudentButton:hover {
+  #addProfessorButton:hover {
     background-color: #0056b3;
   }
   
-  .student-list {
+  .professor-list {
     flex: 2;
     padding: 20px;
     background-color: #fff;
@@ -63,7 +42,7 @@
     margin-bottom: 20px;
   }
   
-  .student {
+  .professor {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
@@ -72,24 +51,23 @@
     border-radius: 10px;
     background-color: #fff;
     transition: background-color 0.2s ease;
-    
     width: 95%;
   }
   
-  .student:hover {
+  .professor:hover {
     background-color: #f5f5f5;
   }
   
-  .student div {
+  .professor div {
     flex: 1;
   }
   
-  .student strong {
+  .professor strong {
     font-weight: bold;
     color: #333;
   }
   
-  .student button {
+  .professor button {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -98,11 +76,11 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
     font-size: 14px;
-    margin-left :10px; 
+    margin-left: 10px;
     margin-bottom: 5px;
-    
   }
   
-  .student button:hover {
+  .professor button:hover {
     background-color: #0056b3;
   }
+  

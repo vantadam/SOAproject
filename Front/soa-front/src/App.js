@@ -8,6 +8,8 @@ import Admin from './components/admin.js';
 
 import Home from './components/Home';
 import Student from './components/students.js';
+import AddStudent from './components/AddStudent.js';
+import AddProfessor from './components/AddProf.js';
 function App() {
   return (
       <div className="App">
@@ -18,6 +20,8 @@ function App() {
           <Route path='/prof' element={<Prof/>} />
           <Route path='/student' element={<Student/>} />
           <Route path='/admin' element={<Admin/>} />
+          <Route path='/addstudent' element={<AddStudent/>} />
+          <Route path='/addprofessor' element={<AddProfessor/>} />
           </Routes>
         </Router>
       </div>
