@@ -11,16 +11,16 @@ function AddProfessor() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://example.com/api/professors', {
+            const response = await fetch('http://localhost:8080/Enseignant', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    firstName,
-                    lastName,
-                    subject,
-                    hours
+                    prenom:firstName,
+                    nom:lastName,
+                    matiere:subject,
+                    nbTotalHeures:hours
                 })
             });
             const data = await response.json();
