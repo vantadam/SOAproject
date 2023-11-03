@@ -45,7 +45,7 @@ public class EnseignantService {
     public List<Enseignant> getAllEnseignants() {
         return enseignantRepository.findAll();
     }
-    public Object getEnseignantById(Long id) {
-        return null;
+    public Optional<Enseignant> getEnseignantById(Long id) {
+        return enseignantRepository.findById(id);
     }
 }

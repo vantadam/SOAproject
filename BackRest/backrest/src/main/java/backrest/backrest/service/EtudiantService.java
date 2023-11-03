@@ -44,7 +44,18 @@ public class EtudiantService {
     public List<Etudiant> getAllEtudiants() {
         return etudiantRepository.findAll();
     }
-    public Object getEtudiantById(Long id) {
-        return null;
+    public Optional<Etudiant> getEtudiantById(Long id) {
+    return etudiantRepository.findById(id);
+
     }
+    
+    public List<Etudiant> getEtudiantByclassName(String className){
+        return etudiantRepository.findByclassName(className);
+    }
+
+    
+
+
+
+
 }

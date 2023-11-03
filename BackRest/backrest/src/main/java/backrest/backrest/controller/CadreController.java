@@ -28,14 +28,14 @@ public CadreController(CadreService cadreService) {
         return cadreService.getAllCadres(); }
 
 
-       @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Cadre> getCadreById(@PathVariable Long id) {
-        return ((Object) cadreService.getCadreById(id))
+        return cadreService.getCadreById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-        @PostMapping(/*consumes = "application/json", produces = "application/json"*/)
+    @PostMapping
     public Cadre createCadre(@RequestBody Cadre cadre) {
         return cadreService.createCadre(cadre);
     }

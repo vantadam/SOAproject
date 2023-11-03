@@ -23,34 +23,41 @@ private final EtudiantService etudiantService;
 public EtudiantController(EtudiantService etudiantService) {
     this.etudiantService =etudiantService;
 }
-      @GetMapping
+    @GetMapping
     public List<Etudiant> getAllEtudiants() {
         return etudiantService.getAllEtudiants(); }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("id/{id}")
     public ResponseEntity<Etudiant> getEtudiantById(@PathVariable Long id) {
         return  etudiantService.getEtudiantById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-        @PostMapping(/*consumes = "application/json", produces = "application/json"*/)
+    @PostMapping(/*consumes = "application/json", produces = "application/json"*/)
     public Etudiant createEtudiant(@RequestBody Etudiant etudiant) {
         return etudiantService.createEtudiant(etudiant);
     }
 
-     @PutMapping("/{id}")
+    @PutMapping("id/{id}")
     public ResponseEntity<Etudiant> updateEtudiant(@PathVariable Long id, @RequestBody Etudiant updatedEtudiant) {
         return etudiantService.updateEtudiant(id,updatedEtudiant)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("id/{id}")
     public boolean deleteEtudiant(@PathVariable Long id) {
         return etudiantService.deleteEtudiant(id) ?
                 ResponseEntity.noContent().build() != null :
                 ResponseEntity.notFound().build() != null;
     }
+
+    @GetMapping("/className/{className}")
+    public List<Etudiant> getEtudiantByclassName(@PathVariable String className){
+        return etudiantService.getEtudiantByclassName(className);
+    }
+
+
 }

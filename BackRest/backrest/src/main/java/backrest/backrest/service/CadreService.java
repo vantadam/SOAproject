@@ -45,7 +45,7 @@ public class CadreService {
     public List<Cadre> getAllCadres() {
         return cadreRepository.findAll();
     }
-    public Object getCadreById(Long id) {
-        return null;
+    public Optional<Cadre>getCadreById(Long id) {
+        return cadreRepository.findById(id);
     }
 }
