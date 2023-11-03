@@ -1,5 +1,21 @@
-div{
-  width: 100%;
+
+
+.window {
+ 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 50px;
+  width: 90%;
+  margin-left: 5%;
   height: 100%;
-  
+}
+
+.pane {
+  border: 1px solid #ccc;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffff;
 }
