@@ -11,6 +11,7 @@ import Student from './components/students.js';
 import AddStudent from './components/AddStudent.js';
 import AddProfessor from './components/AddProf.js';
 import bg from './res/backgrnd.jpg';
+import UpdateStudent from './components/UpdateStudent.js';
 function App() {
   return (
       <div className="App">
@@ -19,6 +20,7 @@ function App() {
         <Router>
           <Navbar/>
           <Routes>
+          <Route path='/updateStudent/:id' element={<UpdateStudent/>} />
           <Route path='/' element={<Home/>} />
           <Route path='/prof' element={<Prof/>} />
           <Route path='/student' element={<Student/>} />

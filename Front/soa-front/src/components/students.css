@@ -106,3 +106,20 @@
   .student button:hover {
     background-color: #0056b3;
   }
+  #updateStudentButton {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  #updateStudentButton:hover {
+    background-color: #0056b3;
+  } 
