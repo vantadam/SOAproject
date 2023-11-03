@@ -53,6 +53,11 @@ public EnseignantController(EnseignantService enseignantService) {
                 ResponseEntity.noContent().build() != null :
                 ResponseEntity.notFound().build() != null;
     }
+    @GetMapping("statistics")
+    public ResponseEntity<Map<String, Double>> getEnseignantStatistics() {
+        Map<String, Double> statistics = enseignantService.getEnseignantStatistics();
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
+    }
 
     
 }

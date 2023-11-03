@@ -25,9 +25,9 @@ public class Enseignant {
 
     private String prenom;
 
-
-
-
     private String matiere;
+
+    private double nbHeuresworked;
+
     private double nbTotalHeures;
 }

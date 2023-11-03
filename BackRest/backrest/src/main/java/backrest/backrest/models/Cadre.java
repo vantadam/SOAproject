@@ -23,6 +23,7 @@ public class Cadre {
 
     private String prenom;
     private String poste;
+    private double nbHeuresworked;
     private double nbTotalHeures;
 
 

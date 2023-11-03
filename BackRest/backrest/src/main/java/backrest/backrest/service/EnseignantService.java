@@ -1,5 +1,7 @@
 package backrest.backrest.service;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,4 +50,23 @@ public class EnseignantService {
     public Optional<Enseignant> getEnseignantById(Long id) {
         return enseignantRepository.findById(id);
     }
+    public Map<String, Double> getEnseignantStatistics() {
+    Map<String, Double> statistics = new HashMap<>();
+    List<Enseignant> allEnseignants = enseignantRepository.findAll();
+    
+    double totalNbHeuresWorked = allEnseignants.stream()
+                                               .mapToDouble(Enseignant::getNbHeuresworked)
+                                               .sum();
+    
+    double totalNbTotalHeures = allEnseignants.stream()
+                                              .mapToDouble(Enseignant::getNbTotalHeures)
+                                              .sum();
+    
+    statistics.put("totalNbHeuresWorked", totalNbHeuresWorked);
+    statistics.put("totalNbTotalHeures", totalNbTotalHeures);
+    
+    return statistics;
+}
+
+
 }
