@@ -1,5 +1,7 @@
 package backrest.backrest.service;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +54,36 @@ public class EtudiantService {
     public List<Etudiant> getEtudiantByclassName(String className){
         return etudiantRepository.findByclassName(className);
     }
+    
+    public Map<String, Long> getStudentStatistics() {
+        Map<String, Long> statistics = new HashMap<>();
+        List<Etudiant> allStudents = etudiantRepository.findAll();
+        
+        long totalNumberOfStudents = allStudents.size();
+        long numberOfStudentsWithAverageLessThanTen = allStudents.stream()
+                                                                 .filter(etudiant -> etudiant.getMoy() < 10)
+                                                                 .count();
+        
+        statistics.put("totalNumberOfStudents", totalNumberOfStudents);
+        statistics.put("numberOfStudentsWithAverageLessThanTen", numberOfStudentsWithAverageLessThanTen);
+        
+        return statistics;
+    }
+
+    public double getGeneralAverage() {
+        List<Etudiant> allStudents = etudiantRepository.findAll();        
+        double generalAverage = allStudents.stream()
+                                           .mapToDouble(Etudiant::getMoy)
+                                           .average()
+                                           .orElse(0.0);
+        
+        return generalAverage;
+    }
+    
+
+
+     
+    
 
     
 
