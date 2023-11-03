@@ -1,9 +1,17 @@
-// Student.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './students.css';
 import { Link } from 'react-router-dom';
 
 const Student = () => {
+    const [students, setStudents] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/Etudiant')
+            .then(response => response.json())
+            .then(data => setStudents(data))
+            .catch(error => console.error(error));
+    }, []);
+
     return (
         <div className="container">
             <div className="sidebar">
@@ -18,41 +26,25 @@ const Student = () => {
             </div>
             <div className="student-list">
                 <h1>Student List</h1>
-                <div className="student" onClick={() => alert("change")}>
-                    <div>
-                        <strong>Name:</strong> John Doe
-                        <br />
-                        <strong>Class:</strong> 10A
-                        <br />
-                        <strong>Grade:</strong> A
+                {students.map(student => (
+                    <div className="student" key={student.id} onClick={() => alert("change")}>
+                        <div>
+                            <strong>Name:</strong> {student.name}
+                            <br />
+                            <strong>Class:</strong> {student.class}
+                            <br />
+                            <strong>Grade:</strong> {student.grade}
+                        </div>
+                        <div>
+                            <strong>Present:</strong> {student.present}
+                            <button id="incrementPresentButton">+</button>
+                            <br />
+                            <strong>Skipped:</strong> {student.skipped}
+                            <button id="incrementSkippedButton">+</button>
+                        </div>
+                        <button id="updateStudentButton">Update</button>
                     </div>
-                    <div>
-                        <strong>Present:</strong> 0
-                        <button id="incrementPresentButton">+</button>
-                        <br />
-                        <strong>Skipped:</strong> 0
-                        <button id="incrementSkippedButton">+</button>
-                    </div>
-                    <button id="updateStudentButton">Update</button>
-                </div>
-                <div className="student">
-                    <div>
-                        <strong>Name:</strong> Jane Smith
-                        <br />
-                        <strong>Class:</strong> 10B
-                        <br />
-                        <strong>Grade:</strong> B
-                    </div>
-                    <div>
-                        <strong>Present:</strong> 0
-                        <button id="incrementPresentButton">+</button>
-                        <br />
-                        <strong>Skipped:</strong> 0
-                        <button id="incrementSkippedButton">+</button>
-                    </div>
-                    <button id="updateStudentButton">Update</button>
-                </div>
-                {/* Add more students here with "Update" buttons */}
+                ))}
             </div>
         </div>
     );
