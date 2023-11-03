@@ -1,20 +1,41 @@
 import React, { useState } from 'react';
 import './AddProf.css';
+
 function AddProfessor() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [subject, setSubject] = useState('');
     const [hours, setHours] = useState('');
+    const [message, setMessage] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(`First Name: ${firstName}, Last Name: ${lastName}, Subject: ${subject}, Hours: ${hours}`);
+        try {
+            const response = await fetch('http://example.com/api/professors', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    subject,
+                    hours
+                })
+            });
+            const data = await response.json();
+            setMessage(data.message);
+        } catch (error) {
+            setMessage('Error adding professor');
+        }
+        setTimeout(() => {
+            setMessage('');
+        }, 3000);
     };
 
     return (
         <div className="container">
             <div className="sidebar">
-                
                 <form onSubmit={handleSubmit}>
                     <label>
                         First Name:
@@ -37,6 +58,7 @@ function AddProfessor() {
                     </label>
                     <br />
                     <button type="submit" id="addProfessorButton">Add Professor</button>
+                    <p>{message}</p>
                 </form>
             </div>
         </div>
