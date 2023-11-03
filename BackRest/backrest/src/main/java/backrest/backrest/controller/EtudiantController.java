@@ -1,7 +1,9 @@
 package backrest.backrest.controller;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import backrest.backrest.models.Etudiant;
@@ -52,6 +54,18 @@ public EtudiantController(EtudiantService etudiantService) {
     public List<Etudiant> getEtudiantByclassName(@PathVariable String className){
         return etudiantService.getEtudiantByclassName(className);
     }
+    @GetMapping("/statistic")
+    public ResponseEntity<Map<String, Long>> getStudentStatistics() {
+        Map<String, Long> statistics = etudiantService.getStudentStatistics();
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
+    }
+    @GetMapping("/average")
+    public ResponseEntity<Double> getGeneralAverage() {
+        double generalAverage = etudiantService.getGeneralAverage();
+        return new ResponseEntity<>(generalAverage, HttpStatus.OK);
+    }
+
+
 
 
 }

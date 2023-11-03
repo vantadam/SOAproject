@@ -1,5 +1,8 @@
 package backrest.backrest.controller;
 import java.util.List;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import backrest.backrest.models.Cadre;
@@ -32,9 +35,7 @@ public EnseignantController(EnseignantService enseignantService) {
                 .orElseGet(() -> ResponseEntity.notFound().build());
 
        }
-
-
-        @PostMapping(/*consumes = "application/json", produces = "application/json"*/)
+         @PostMapping(/*consumes = "application/json", produces = "application/json"*/)
     public Enseignant createEnseignant(@RequestBody Enseignant enseignant) {
         return enseignantService.createEnseignant(enseignant);
     }
@@ -52,5 +53,6 @@ public EnseignantController(EnseignantService enseignantService) {
                 ResponseEntity.noContent().build() != null :
                 ResponseEntity.notFound().build() != null;
     }
+
     
 }
