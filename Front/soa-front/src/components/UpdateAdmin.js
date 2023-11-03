@@ -2,40 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './AddProf.css';
 
-function UpdateProf() {
+function UpdateAdmin() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-  
-    const [subject, setSubject] = useState('');
-    const [totalHours, setTotalHours] = useState(0);
-    const [hoursWorked, setHoursWorked] = useState(0);
+    const [role, setRole] = useState('');
+    const [hoursWorked, setHoursWorked] = useState('');
+    const [totalHours, setTotalHours] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
 
     useEffect(() => {
-        async function fetchProf() {
+        async function fetchAdmin() {
             try {
-                const response = await fetch(`http://localhost:8080/Enseignant/${id}`);
+                const response = await fetch(`http://localhost:8080/Cadre/${id}`);
                 const data = await response.json();
                 setFirstName(data.prenom);
                 setLastName(data.nom);
-                
-                setSubject(data.matiere);
-                setTotalHours(data.nbTotalHeures);
+                setRole(data.poste);
                 setHoursWorked(data.nbHeuresworked);
+                setTotalHours(data.nbTotalHeures);
             } catch (error) {
                 console.error(error);
-               
             }
         }
-        fetchProf();
+        fetchAdmin();
     }, [id]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`http://localhost:8080/Enseignant/${id}`, {
+            const response = await fetch(`http://localhost:8080/Cadre/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,21 +40,20 @@ function UpdateProf() {
                 body: JSON.stringify({
                     prenom: firstName,
                     nom: lastName ,
-                    
-                    matiere: subject,
-                    totalHours: totalHours,
-                    hoursWorked: hoursWorked
+                    poste: role,
+                    nbHeuresworked: hoursWorked,
+                    nbTotalHeures: totalHours
                 })
             });
             const data = await response.json();
             console.log(data);
-            setSuccessMessage('Professor updated successfully');
+            setSuccessMessage('Admin updated successfully');
             setTimeout(() => {
                 setSuccessMessage('');
             }, 3000);
         } catch (error) {
             console.error(error);
-            setErrorMessage('Error updating professor');
+            setErrorMessage('Error updating admin');
             setTimeout(() => {
                 setErrorMessage('');
             }, 3000);
@@ -77,20 +73,19 @@ function UpdateProf() {
                     <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 </label>
                 <br />
-               
                 <label>
-                    Subject:
-                    <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} />
-                </label>
-                <br />
-                <label>
-                    Total Hours:
-                    <input type="number" value={totalHours} onChange={(e) => setTotalHours(e.target.value)} />
+                    Role:
+                    <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
                 </label>
                 <br />
                 <label>
                     Hours Worked:
                     <input type="number" value={hoursWorked} onChange={(e) => setHoursWorked(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Total Hours:
+                    <input type="number" value={totalHours} onChange={(e) => setTotalHours(e.target.value)} />
                 </label>
                 <br />
                 <button type="submit">Update</button>
@@ -101,4 +96,4 @@ function UpdateProf() {
     );
 }
 
-export default UpdateProf;
+export default UpdateAdmin;

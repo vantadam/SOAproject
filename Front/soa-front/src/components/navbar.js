@@ -18,7 +18,7 @@ function Navbar() {
                     <Link to="/prof">Professors</Link>
                 </li>
                 <li>
-                    <Link to="/administration">Admin Staff</Link>
+                    <Link to="/admin">Admin Staff</Link>
                 </li>
             </ul>
         </nav>

@@ -12,6 +12,9 @@ import AddStudent from './components/AddStudent.js';
 import AddProfessor from './components/AddProf.js';
 import bg from './res/backgrnd.jpg';
 import UpdateStudent from './components/UpdateStudent.js';
+import UpdateProf from './components/UpdateProf.js';
+import AddAdmin from './components/AddAdmin.js';
+import UpdateAdmin from './components/UpdateAdmin.js';
 function App() {
   return (
       <div className="App">
@@ -20,13 +23,17 @@ function App() {
         <Router>
           <Navbar/>
           <Routes>
-          <Route path='/updateStudent/:id' element={<UpdateStudent/>} />
+          
           <Route path='/' element={<Home/>} />
           <Route path='/prof' element={<Prof/>} />
           <Route path='/student' element={<Student/>} />
           <Route path='/admin' element={<Admin/>} />
           <Route path='/addstudent' element={<AddStudent/>} />
           <Route path='/addprofessor' element={<AddProfessor/>} />
+          <Route path='/updateStudent/:id' element={<UpdateStudent/>} />
+          <Route path='/updateProf/:id' element={<UpdateProf/>} />
+          <Route path='/addadmin' element={<AddAdmin/>} />
+          <Route path='/updateadmin/:id' element={<UpdateAdmin/>} />
           </Routes>
         </Router>
       </div>

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import './AddProf.css';
 
-function AddProfessor() {
+function AddAdmin() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [subject, setSubject] = useState('');
+    const [position, setPosition] = useState('');
     const [hours, setHours] = useState('');
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/Enseignant', {
+            const response = await fetch('http://localhost:8080/Cadre', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,14 +19,14 @@ function AddProfessor() {
                 body: JSON.stringify({
                     prenom:firstName,
                     nom:lastName,
-                    matiere:subject,
+                    poste:position,
                     nbTotalHeures:hours
                 })
             });
             const data = await response.json();
-            setMessage('Professor added successfully');
+            setMessage('Admin added successfully');
         } catch (error) {
-            setMessage('Error adding professor');
+            setMessage('Error adding admin');
         }
         setTimeout(() => {
             setMessage('');
@@ -48,8 +48,8 @@ function AddProfessor() {
                     </label>
                     <br />
                     <label>
-                        Subject:
-                        <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} required />
+                        Position:
+                        <input type="text" value={position} onChange={(e) => setPosition(e.target.value)} required />
                     </label>
                     <br />
                     <label>
@@ -57,7 +57,7 @@ function AddProfessor() {
                         <input type="number" value={hours} onChange={(e) => setHours(e.target.value)} required />
                     </label>
                     <br />
-                    <button type="submit" id="addProfessorButton">Add Professor</button>
+                    <button type="submit" id="addAdminButton">Add Admin</button>
                     <p>{message}</p>
                 </form>
             </div>
@@ -65,6 +65,4 @@ function AddProfessor() {
     );
 }
 
-export default AddProfessor;
-
-
+export default AddAdmin;

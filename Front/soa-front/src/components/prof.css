@@ -83,4 +83,18 @@
   .professor button:hover {
     background-color: #0056b3;
   }
-  
+  #updateProfessorButton{
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+  #updateProfessorButton:hover{
+    background-color: #0056b3;
+  }
