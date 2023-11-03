@@ -20,16 +20,14 @@ public class Enseignant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "nom")
+    
     private String nom;
-    @Column (name = "prenom")
+
     private String prenom;
-    @Column (name = "mail")
-    private String mail;
-    @Column (name = "téléphone")
-    private long téléphone;
-    @Column (name = "adresse")
-    private String adresse;
-    @Column (name = "naissance")
-    private LocalDate naissance;
+
+
+
+
+    private String matiere;
+    private double nbTotalHeures;
 }

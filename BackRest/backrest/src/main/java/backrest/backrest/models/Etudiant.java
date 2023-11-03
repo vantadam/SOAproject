@@ -23,18 +23,11 @@ public class Etudiant {
    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     private String nom;
 
     private String prenom;
 
-    private String mail;
-
-    private long téléphone;
-
-    private String adresse;
-
-    private LocalDate naissance;
     private String className;
     private int pres;
     private int abs;
