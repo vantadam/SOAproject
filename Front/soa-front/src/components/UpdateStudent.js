@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './AddStudent.css';
 
 function UpdateStudent() {
@@ -12,6 +12,7 @@ function UpdateStudent() {
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchStudent() {
@@ -34,6 +35,24 @@ function UpdateStudent() {
         }
         fetchStudent();
     }, [id]);
+
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/Etudiant/id/${id}`, {
+                method: 'DELETE'
+            });
+            const data = await response.json();
+            console.log(data);
+           alert("Student deleted successfully");
+              navigate('/student');
+        } catch (error) {
+            console.error(error);
+            setErrorMessage('Error deleting student');
+            setTimeout(() => {
+                setErrorMessage('');
+            }, 3000);
+        }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -101,6 +120,7 @@ function UpdateStudent() {
                 </label>
                 <br />
                 <button type="submit">Update</button>
+                <button type="button" onClick={handleDelete}>Delete</button>
                 {successMessage && <p>{successMessage}</p>}
                 {errorMessage && <p>{errorMessage}</p>}
             </form>

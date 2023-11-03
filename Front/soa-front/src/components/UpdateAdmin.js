@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import './AddProf.css';
 
 function UpdateAdmin() {
@@ -11,6 +11,8 @@ function UpdateAdmin() {
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
+    const Navigate = useNavigate();
+    
 
     useEffect(() => {
         async function fetchAdmin() {
@@ -50,10 +52,29 @@ function UpdateAdmin() {
             setSuccessMessage('Admin updated successfully');
             setTimeout(() => {
                 setSuccessMessage('');
+                
             }, 3000);
         } catch (error) {
             console.error(error);
             setErrorMessage('Error updating admin');
+            setTimeout(() => {
+                setErrorMessage('');
+            }, 3000);
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/Cadre/${id}`, {
+                method: 'DELETE',
+            });
+            const data = await response.json();
+            console.log(data);
+            alert('Admin deleted successfully');
+            Navigate('/admin');
+        } catch (error) {
+            console.error(error);
+            setErrorMessage('Error deleting admin');
             setTimeout(() => {
                 setErrorMessage('');
             }, 3000);
@@ -89,6 +110,7 @@ function UpdateAdmin() {
                 </label>
                 <br />
                 <button type="submit">Update</button>
+                <button type="button" onClick={handleDelete}>Delete</button>
                 {successMessage && <p>{successMessage}</p>}
                 {errorMessage && <p>{errorMessage}</p>}
             </form>

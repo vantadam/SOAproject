@@ -37,9 +37,13 @@ form {
     cursor: pointer;
     font-size: 18px;
     transition: background-color 0.2s ease;
+    margin-left: 5px;
   }
   
   button:hover {
     background-color: #0056b3;
   }
   
+  button[type="button"] {
+    background-color: red;
+  }
