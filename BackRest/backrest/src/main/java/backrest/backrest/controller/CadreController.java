@@ -1,5 +1,8 @@
 package backrest.backrest.controller;
 import java.util.List;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import backrest.backrest.models.Cadre;
@@ -46,6 +49,11 @@ public CadreController(CadreService cadreService) {
         return cadreService.deleteCadre(id) ?
                 ResponseEntity.noContent().build() != null :
                 ResponseEntity.notFound().build() != null;
+    }
+    @GetMapping("statistics")
+    public ResponseEntity<Map<String, Double>> getCadreStatistics() {
+        Map<String, Double> statistics = cadreService.getCadreStatistics();
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
     
 }
