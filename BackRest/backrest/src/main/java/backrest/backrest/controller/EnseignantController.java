@@ -31,10 +31,13 @@ public EnseignantController(EnseignantService enseignantService) {
 
        @GetMapping("/{id}")
     public ResponseEntity<Enseignant> getEnseignantById(@PathVariable Long id) {
-        return ((Object) enseignantService.getEnseignantById(id))
+
+        return enseignantService.getEnseignantById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
-    }
+
+       }
+
 
         @PostMapping(/*consumes = "application/json", produces = "application/json"*/)
     public Enseignant createEnseignant(@RequestBody Enseignant enseignant) {

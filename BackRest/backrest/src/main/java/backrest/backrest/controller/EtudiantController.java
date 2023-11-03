@@ -53,4 +53,10 @@ public EtudiantController(EtudiantService etudiantService) {
                 ResponseEntity.noContent().build() != null :
                 ResponseEntity.notFound().build() != null;
     }
+
+    @GetMapping("/className/{className}")
+    public List<Etudiant> getEtudiantByclassName(@PathVariable String className){
+        return etudiantService.getEtudiantByclassName(className);
+    }
+
 }
