@@ -27,10 +27,10 @@ const Student = () => {
             <div className="student-list">
                 <h1>Student List</h1>
                 {students.map(student => (
-                    <div className="student" key={student.id} onClick={() => alert("change")}>
+                    <div className="student" key={student.id}>
                         <div>
                             <strong>Name:</strong> {student.name}
-                            <br />
+                            <br/>
                             <strong>Class:</strong> {student.class}
                             <br />
                             <strong>Grade:</strong> {student.grade}
