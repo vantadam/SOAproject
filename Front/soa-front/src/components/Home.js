@@ -88,11 +88,11 @@ function Home() {
                     />
                 </div>
                 <div className="pane">
-                    <h1>Student Average: {average}</h1>
+                    <h1>Student Average: </h1><h1 style={{color:"blue"}}>{average}</h1>
                 </div>
                 <div className="pane">
                     <div style={progressStyle}>
-                        <div style={{...progressFillStyle, width: `${ensprog}%`}}></div> {/* added width property */}
+                        <div style={{...progressFillStyle, width: `${ensprog}%`}}></div> 
                     </div>
                     <p>Hours worked by teachers: {enshw}/{ensh}</p>
                 </div>
