@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                     targetNamespace="http://example.com/back_soap"
+                     xmlns:tns="http://example.com/back_soap"
+                     elementFormDefault="qualified">
+
+
+    <xs:element name="getStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="studentId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getStudentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="studentInfo" type="tns:StudentInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="StudentInfo">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="className" type="xs:string"/>
+            <xs:element name="abs" type="xs:int"/>
+            <xs:element name="present" type="xs:int"/>
+            <xs:element name="moy" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
